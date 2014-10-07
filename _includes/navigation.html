@@ -1,0 +1,13 @@
+{% for section in site.data.docs %}
+  <h3>{{ section.title }}</h3><br>
+  {% if section.children != null %}
+    {% for childSection in section.children %}
+      <h4>{{ childSection.title }}</h4>
+      {% include docs_ul.html items=childSection.docs %}
+    {% endfor %}
+  {% endif %}
+  {% if section.docs != null %}
+    {% include docs_ul.html items=section.docs %}
+  {% endif %}
+
+{% endfor %}
